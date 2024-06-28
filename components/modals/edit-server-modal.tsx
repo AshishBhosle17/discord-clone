@@ -23,7 +23,7 @@ import {
   FormMessage
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Button } from "@mui/material";
+import { Button } from "@/components/ui/button"
 import { FileUpload } from "@/components/file-upload";
 import { useRouter } from "next/navigation";
 import axios from "axios";
@@ -146,9 +146,9 @@ export const EditServerModal = () => {
               />
             </div>
             <DialogFooter className="bg-gray-100 px-6 py-4">
-              <Button variant="contained" color="primary" disabled={isLoading}>
+              <Button variant ="primary" disabled={isLoading}>
                 Save
-              </Button>
+              </Button> 
             </DialogFooter>
           </form>
         </Form>

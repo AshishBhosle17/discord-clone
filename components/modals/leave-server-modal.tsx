@@ -61,7 +61,7 @@ export const LeaveServerModal = () => {
           <Button disabled={isLoading} onClick={onClose} variant="outlined" color="primary">
             Cancel
           </Button>
-          <Button disabled={isLoading} onClick={onClick} variant="contained" color="primary">
+          <Button disabled={isLoading} onClick={onClick} variany ="primary">
             Confirm
           </Button>
         </div>

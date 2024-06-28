@@ -33,7 +33,7 @@ import {
  } from "@/components/ui/select";
 
 import { Input } from "@/components/ui/input";
-import { Button } from "@mui/material"
+import { Button } from "@/components/ui/button"
 import { useParams, useRouter } from "next/navigation";
 import { useModal } from "@/hooks/use-modal-store";
 import { ChannelType } from "@prisma/client";
@@ -177,7 +177,7 @@ export const CreateChannelModal = () => {
                  />
               </div>
               <DialogFooter className=" bg-gray-100 px-6 py-4  flex justify-center">
-                <Button variant="contained" color="primary" disabled={isLoading}>
+                <Button variant="primary"  disabled={isLoading}>
                   Create
                 </Button>
               </DialogFooter>
