@@ -23,7 +23,7 @@ import {
   FormMessage
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Button } from "@mui/material"
+import { Button } from "@mui/material";
 import { FileUpload } from "@/components/file-upload";
 import { useRouter } from "next/navigation";
 import axios from "axios";
@@ -38,13 +38,15 @@ const formSchema = z.object({
   })
 });
 
-export const CreateServerModal = () => {
+export const EditServerModal = () => {
  
 
   const router = useRouter();
-  const {isOpen,onClose,type}=useModal();
+  const {isOpen,onClose,type,data}=useModal();
 
-  const isModalOpen=isOpen && type=="createServer";
+  const isModalOpen=isOpen && type=="editServer";
+
+  const {server}=data;
 
 
   const form = useForm({
@@ -55,11 +57,18 @@ export const CreateServerModal = () => {
     }
   });
 
+  useEffect(()=>{
+    if(server){
+      form.setValue("name",server.name);
+      form.setValue("imageUrl",server.imageUrl)
+    }
+  },[server,form])
+
   const isLoading = form.formState.isSubmitting;
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.post("/api/servers",values);
+      await axios.patch(`/api/servers/${server?.id}`, values);
 
       form.reset();
 
@@ -138,7 +147,7 @@ export const CreateServerModal = () => {
             </div>
             <DialogFooter className="bg-gray-100 px-6 py-4">
               <Button variant="contained" color="primary" disabled={isLoading}>
-                Create
+                Save
               </Button>
             </DialogFooter>
           </form>
