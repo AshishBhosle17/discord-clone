@@ -19,15 +19,20 @@ import { useModal } from "@/hooks/use-modal-store";
 export const DeleteMessageModal = () => {
   const { isOpen, onClose, type, data } = useModal();
 
- 
+  const isModalOpen = isOpen && type === "deleteMessage";
+  const { apiUrl, query } = data;
+
   const [isLoading, setIsLoading] = useState(false);
 
   const onClick = async () => {
     try {
       setIsLoading(true);
-      
+      const url = qs.stringifyUrl({
+        url: apiUrl || "",
+        query,
+      });
 
-      
+      await axios.delete(url);
 
       onClose();
     } catch (error) {
@@ -38,7 +43,7 @@ export const DeleteMessageModal = () => {
   }
 
   return (
-    <Dialog onOpenChange={onClose}>
+    <Dialog open={isModalOpen} onOpenChange={onClose}>
       <DialogContent className="bg-white text-black p-0 overflow-hidden">
         <DialogHeader className="pt-8 px-6">
           <DialogTitle className="text-2xl text-center font-bold">
