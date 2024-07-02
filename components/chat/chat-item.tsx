@@ -165,7 +165,7 @@ const ChatItem = ({id,
             </a>
           )}
 
-{isPDF && (
+          {isPDF && (   
             <div className="relative flex items-center p-2 mt-2 rounded-md bg-background/10">
               <FileIcon className="h-10 w-10 fill-indigo-200 stroke-indigo-400" />
               <a 
@@ -243,7 +243,10 @@ const ChatItem = ({id,
           )}
           <ActionTooltip label="Delete">
             <Trash
-            
+              onClick={() => onOpen("deleteMessage", { 
+                apiUrl: `${socketUrl}/${id}`,
+                query: socketQuery,
+               })}
               className="cursor-pointer ml-auto w-4 h-4 text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-300 transition"
             />
           </ActionTooltip>
