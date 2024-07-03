@@ -8,7 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import Button from '@mui/material/Button';
+import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { useModal } from "@/hooks/use-modal-store";
@@ -58,10 +58,10 @@ export const LeaveServerModal = () => {
       </DialogHeader>
       <DialogFooter className=" bg-gray-100 px-6 py-4">
         <div className=" flex items-center justify-between w-full">
-          <Button disabled={isLoading} onClick={onClose} variant="outlined" color="primary">
+          <Button disabled={isLoading} onClick={onClose} variant="primary">
             Cancel
           </Button>
-          <Button disabled={isLoading} onClick={onClick} variany ="primary">
+          <Button disabled={isLoading} onClick={onClick} variant ="primary">
             Confirm
           </Button>
         </div>
